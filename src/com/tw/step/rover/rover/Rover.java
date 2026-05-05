@@ -57,10 +57,6 @@ public class Rover {
     @Override
     public String toString() {
         String base = coordinate.toString() + " " + heading;
-
-        if (roverState.status() == RoverStatus.DEAD) {
-            return base + " " + RoverStatus.DEAD;
-        }
-        return base + " " + RoverStatus.ALIVE;
+        return base + " " + roverState.status();
     }
 }

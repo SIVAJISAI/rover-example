@@ -13,19 +13,16 @@ import com.tw.step.rover.roversystem.RoverSystemScanner;
 public class App {
     static void main() {
         String text = """
-                1 16
-                1 0 N
+                10 10
+                1 1 N
                 FFF
                 """;
 
         RoverSystemScanner scanner = RoverSystemScanner.from(text);
         Navigator navigator = Navigator.create();
 
-        Coordinate topRight = scanner.scanTopRight();
-        Boundary boundary = new Plateau(new Coordinate(0, 0), topRight);
-
         CommandCreator commandCreator = new CommandCreator();
-        RoverSystemParser roverSystemParser = new RoverSystemParser(scanner, navigator, boundary, commandCreator);
+        RoverSystemParser roverSystemParser = new RoverSystemParser(scanner, navigator, commandCreator);
         RoverSystem system = roverSystemParser.parse();
         system.execute();
         System.out.println(system);

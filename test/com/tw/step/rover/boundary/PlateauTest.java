@@ -9,9 +9,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PlateauTest {
     @Test
     void shouldAllowCoordinateWithinInclusiveBounds() {
-        Plateau plateau = new Plateau(new Coordinate(0, 0), new Coordinate(2, 2));
+        Plateau plateau = new Plateau(new Coordinate(0, 0), new Coordinate(5, 5));
+        assertTrue(plateau.isWithin(new Coordinate(0, 0)));
+        assertTrue(plateau.isWithin(new Coordinate(5, 5)));
+        assertTrue(plateau.isWithin(new Coordinate(2, 3)));
+    }
 
-        assertTrue(plateau.isWithin(new Coordinate(2, 2)));
-        assertFalse(plateau.isWithin(new Coordinate(3, 2)));
+    @Test
+    void shouldReturnFalseForCoordinatesOutsideBounds() {
+        Plateau plateau = new Plateau(new Coordinate(0, 0), new Coordinate(5, 5));
+        assertFalse(plateau.isWithin(new Coordinate(6, 5)));
+        assertFalse(plateau.isWithin(new Coordinate(5, 6)));
+        assertFalse(plateau.isWithin(new Coordinate(-1, 0)));
     }
 }
