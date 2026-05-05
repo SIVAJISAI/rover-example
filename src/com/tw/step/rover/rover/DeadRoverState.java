@@ -24,4 +24,6 @@ public class DeadRoverState implements RoverState {
     public RoverState move(Navigator navigator, Boundary boundary) {
         return this;
     }
+    @Override
+    public RoverStatus status(){return RoverStatus.DEAD;};
 }

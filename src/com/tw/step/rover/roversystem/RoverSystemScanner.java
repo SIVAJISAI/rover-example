@@ -48,4 +48,10 @@ public class RoverSystemScanner {
     public Direction scanDirection() {
         return Direction.valueOf(this.consume());
     }
+
+    public Coordinate scanTopRight() {
+        int maxX = scanNumber();
+        int maxY = scanNumber();
+        return new Coordinate(maxX, maxY);
+    }
 }
