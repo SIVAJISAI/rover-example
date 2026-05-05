@@ -12,16 +12,16 @@ public class Navigator {
 
     private Navigator() {
         offsets = new HashMap<>();
-        offsets.put(Direction.NORTH, new Coordinate(0,1));
-        offsets.put(Direction.EAST, new Coordinate(1,0));
-        offsets.put(Direction.SOUTH, new Coordinate(0,-1));
-        offsets.put(Direction.WEST, new Coordinate(-1,0));
+        offsets.put(Direction.N, new Coordinate(0,1));
+        offsets.put(Direction.E, new Coordinate(1,0));
+        offsets.put(Direction.S, new Coordinate(0,-1));
+        offsets.put(Direction.W, new Coordinate(-1,0));
 
         lefts = new HashMap<Direction, Direction>();
-        lefts.put(Direction.NORTH, Direction.WEST);
-        lefts.put(Direction.SOUTH, Direction.EAST);
-        lefts.put(Direction.WEST, Direction.SOUTH);
-        lefts.put(Direction.EAST, Direction.NORTH);
+        lefts.put(Direction.N, Direction.W);
+        lefts.put(Direction.S, Direction.E);
+        lefts.put(Direction.W, Direction.S);
+        lefts.put(Direction.E, Direction.N);
 
         rights = new HashMap<Direction, Direction>();
         for (Map.Entry<Direction, Direction> entry : lefts.entrySet()) {
@@ -41,7 +41,7 @@ public class Navigator {
         return rights.get(direction);
     }
     
-    public Navigator create() {
+    public static Navigator create() {
         if(NAVIGATOR != null) return NAVIGATOR;
         NAVIGATOR = new Navigator();
         return NAVIGATOR;

@@ -18,6 +18,10 @@ public class Rover {
         this.roverState = new LiveRoverState(this);
     }
 
+    public Rover(Coordinate coordinate, Direction heading) {
+        this("", coordinate, heading);
+    }
+
     public void turnLeft(Navigator navigator, Boundary boundary) {
         this.roverState = this.roverState.turnLeft(navigator, boundary);
     }
@@ -48,5 +52,10 @@ public class Rover {
 
     boolean isWithin(Boundary boundary) {
         return boundary.isWithin(this.coordinate);
+    }
+
+    @Override
+    public String toString() {
+        return coordinate.toString() + " " + heading.toString();
     }
 }
